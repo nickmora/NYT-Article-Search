@@ -99,7 +99,31 @@
 </div>
 
 
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+
+$("search").on("click", function(event) {
+	event.preventDefault();
+})
+
+var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+url += '?' + $.param({
+	'api-key': "b4e04bb572d94f688bf7f2fdbfc3300f",
+	"q": "searchTerm"
+});
+
+$.ajax({
+	url: url,
+	method: 'GET',
+	}).done(function(result) {
+		console.log(result);
+	}).fail(function(err) {
+		throw err;
+});
+
+
+</script>
     </body>
 </html>
